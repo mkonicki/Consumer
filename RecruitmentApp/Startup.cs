@@ -5,9 +5,12 @@ using System.Threading.Tasks;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using RecruitmentApp.DB;
+using RecruitmentApp.DB.Repository;
 using RecruitmentApp.Entities.Validations;
 
 namespace RecruitmentApp
@@ -31,8 +34,12 @@ namespace RecruitmentApp
         {
             // Add framework services.
             services.AddMvc()
-                .AddFluentValidation(val=>val.RegisterValidatorsFromAssemblyContaining<ConsumerValidation>());
-          ;
+                .AddFluentValidation(val => val.RegisterValidatorsFromAssemblyContaining<ConsumerValidation>());
+
+            services.AddDbContext<ConsumerContext>(options =>
+                options.UseSqlServer(@"Server=db;Database=recruitment;User=sa;Password=P@ssw0rd;"));
+
+            services.AddTransient<IConsumerRepository, ConsumerRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

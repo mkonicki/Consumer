@@ -8,7 +8,7 @@ namespace RecruitmentApp.Entities.Validations
         public AddressValidation()
         {
             RuleFor(address => address.City).NotNull();
-           // RuleFor(address => address.Street).NotNull().WithMessage(Resources.AddressCityValidationMessage);
+            RuleFor(address => address.Street).NotNull();
 
         }
     }
