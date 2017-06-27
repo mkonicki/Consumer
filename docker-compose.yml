@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  recruitmentapp:
+    image: recruitmentapp
+    build:
+      context: ./RecruitmentApp
+      dockerfile: Dockerfile
