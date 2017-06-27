@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using RecruitmentApp.Properties;
 
 namespace RecruitmentApp.Entities.Validations
 {

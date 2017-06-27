@@ -4,11 +4,11 @@ namespace RecruitmentApp.Entities.Validations
 {
     public class ConsumerValidation : AbstractValidator<Consumer>
     {
-        private const string PhoneNumberRegEx = @"/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{3})/";
+        private const string PhoneNumberRegEx = @"^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{3}$";
 
         public ConsumerValidation()
         {
-          //  RuleFor(cons => cons.Number).Matches(PhoneNumberRegEx);
+              RuleFor(cons => cons.Number).Matches(PhoneNumberRegEx).WithMessage("Phone number should be in format XXX XXX XXX");
         }
     }
 }

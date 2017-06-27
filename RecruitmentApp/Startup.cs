@@ -37,7 +37,7 @@ namespace RecruitmentApp
                 .AddFluentValidation(val => val.RegisterValidatorsFromAssemblyContaining<ConsumerValidation>());
 
             services.AddDbContext<ConsumerContext>(options =>
-                options.UseSqlServer(@"Server=db;Database=recruitment;User=sa;Password=P@ssw0rd;"));
+                options.UseSqlServer(@"Server=db;Database=recr;User=sa;Password=P@ssw0rd;"));
 
             services.AddTransient<IConsumerRepository, ConsumerRepository>();
         }
@@ -64,7 +64,7 @@ namespace RecruitmentApp
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Consumers}/{action=Index}/{id?}");
             });
         }
     }

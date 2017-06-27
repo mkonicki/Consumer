@@ -28,7 +28,7 @@ namespace RecruitmentApp.DB
             modelBuilder.Entity<Consumer>()
                 .HasOne(e => e.Address)
                 .WithOne(ad => ad.Consumer)
-                .HasForeignKey<Address>(ad => ad.ConcumerId);
+                .HasForeignKey<Address>(ad => ad.ConsumerId);
         }
     }
 }
