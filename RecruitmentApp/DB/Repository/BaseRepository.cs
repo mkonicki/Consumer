@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RecruitmentApp.Entities;
@@ -8,7 +10,7 @@ namespace RecruitmentApp.DB.Repository
     public interface IBaseRepository<T> where T : class, IEntity
     {
         Task<bool> Add(T entity);
-        IQueryable<T> GetAll();
+        IList<T> GetAll();
         Task<bool> Update(T entity);
         Task<int> SaveChangesAsync();
     }
@@ -30,9 +32,9 @@ namespace RecruitmentApp.DB.Repository
             return await SaveChangesAsync() > 0;
         }
 
-        public virtual IQueryable<T> GetAll()
+        public virtual IList<T> GetAll()
         {
-            return Data.AsQueryable();
+            return Data.AsQueryable().ToList();
         }
 
         public virtual async Task<bool> Update(T entity)

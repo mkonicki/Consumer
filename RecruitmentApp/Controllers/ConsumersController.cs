@@ -16,9 +16,9 @@ namespace RecruitmentApp.Controllers
             _repository = repository;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _repository.GetAll().ToListAsync());
+            return View(_repository.GetAll());
         }
 
         public async Task<IActionResult> Details(Guid id)

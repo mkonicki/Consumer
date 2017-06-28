@@ -3,10 +3,10 @@ using RecruitmentApp.Entities;
 
 namespace RecruitmentApp.DB
 {
-   public sealed class ConsumerContext : DbContext
+   public class ConsumerContext : DbContext
     {
-        public DbSet<Address> Address { get; set; }
-        public DbSet<Consumer> Consumer { get; set; }
+        public virtual DbSet<Address> Address { get; set; }
+        public virtual DbSet<Consumer> Consumer { get; set; }
 
         public ConsumerContext(DbContextOptions options) : base(options)
         {

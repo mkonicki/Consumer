@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -25,9 +26,9 @@ namespace RecruitmentApp.DB.Repository
             return base.Add(consumer);
         }
 
-        public override IQueryable<Consumer> GetAll()
+        public override IList<Consumer> GetAll()
         {
-            return base.GetAll().Include(con => con.Address);
+            return Data.AsQueryable().Include(con => con.Address).ToList();
         }
         
         public Task<Consumer> GetById(Guid id)
